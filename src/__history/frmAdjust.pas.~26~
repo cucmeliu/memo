@@ -1,0 +1,89 @@
+unit frmAdjust;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ComCtrls, StdCtrls, Buttons, iniFiles;
+
+type
+  TAdjustForm = class(TForm)
+    dtpDate: TDateTimePicker;
+    dtpWorkin: TDateTimePicker;
+    dtpWorkout: TDateTimePicker;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    BitBtn1: TBitBtn;
+    BitBtn2: TBitBtn;
+    procedure FormShow(Sender: TObject);
+    procedure dtpDateChange(Sender: TObject);
+    procedure BitBtn1Click(Sender: TObject);
+  private
+    { Private declarations }
+    procedure readInOut(day: TDate);
+  public
+    { Public declarations }
+    procedure setDate(day: TDate);
+  end;
+
+var
+  AdjustForm: TAdjustForm;
+
+implementation
+
+uses unitPubMethod;
+
+{$R *.dfm}
+
+procedure TAdjustForm.BitBtn1Click(Sender: TObject);
+var
+  aIni: TIniFile;
+  today: TDatetime;
+begin
+        aIni := TIniFile.Create(ExtractFileDir(Application.ExeName) + '\worktime.data');
+
+        today := aIni.ReadDateTime('WORKIN', datetostr(now), strtodatetime('2000-1-1 0:0:0'));
+        //infoMsg(datetimetostr(today));
+        if today=strtodatetime('2000-1-1 0:0:0') then
+        begin
+            today := now;
+            aIni.WriteString('WORKIN', formatdatetime('yyyy-MM-dd', now), formatdatetime('H:mm:ss', today));
+        end;
+
+        //dtpWorkIn.DateTime := today;
+        
+        aIni.Free;
+end;
+
+procedure TAdjustForm.dtpDateChange(Sender: TObject);
+begin
+    readInOut(dtpDate.Date);
+end;
+
+procedure TAdjustForm.FormShow(Sender: TObject);
+begin
+//
+
+end;
+
+procedure TAdjustForm.readInOut(day: TDate);
+var
+    aIni: TIniFile;
+   // inTime, outTime: String;
+begin
+    aIni := TIniFile.Create(ExtractFileDir(Application.ExeName) + '\worktime.data');
+   // inTime      := aIni.ReadString('WORKIN', formatdatetime('yyyy-MM-dd', day), '0:0:0');
+   // outTime     := aIni.ReadString('WORKOUT', formatdatetime('yyyy-MM-dd', day), '0:0:0');
+    dtpWorkin.DateTime := strtotime(aIni.ReadString('WORKIN', formatdatetime('yyyy-MM-dd', day), '0:0:0'));
+    dtpWorkin.DateTime := aIni.ReadDateTime('WORKIN', formatdatetime('yyyy-MM-dd', day), strToTime('0:0:0'));
+end;
+
+procedure TAdjustForm.setDate(day: TDate);
+begin
+    dtpDate.DateTime := day;
+    readInOut(day);
+    
+end;
+
+end.

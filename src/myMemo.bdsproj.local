@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2009-12-23 22:13:19.718.pas,D:\document\Borland Studio Projects\Unit1.pas=E:\project\备忘录\src\frmMain.pas</Transaction>
+    <Transaction>2009-12-23 22:13:19.718.dfm,D:\document\Borland Studio Projects\Unit1.dfm=E:\project\备忘录\src\frmMain.dfm</Transaction>
+    <Transaction>2009-12-23 22:13:31.109.bdsproj,D:\document\Borland Studio Projects\Project1.bdsproj=E:\project\备忘录\src\myMemo.bdsproj</Transaction>
+    <Transaction>2009-12-23 22:28:24.437.pas,E:\project\备忘录\src\Unit2.pas=E:\project\备忘录\src\frmDetail.pas</Transaction>
+    <Transaction>2009-12-23 22:28:24.437.dfm,E:\project\备忘录\src\Unit2.dfm=E:\project\备忘录\src\frmDetail.dfm</Transaction>
+    <Transaction>2009-12-27 20:15:01.609.pas,E:\project\备忘录\src\Unit1.pas=E:\project\备忘录\src\def.pas</Transaction>
+    <Transaction>2011-09-30 21:52:55.064.pas,D:\workspace\备忘录\src\Unit1.pas=D:\workspace\备忘录\src\frmAdjust.pas</Transaction>
+    <Transaction>2011-09-30 21:52:55.064.dfm,D:\workspace\备忘录\src\Unit1.dfm=D:\workspace\备忘录\src\frmAdjust.dfm</Transaction>
+  </Transactions>
+</BorlandProject>
